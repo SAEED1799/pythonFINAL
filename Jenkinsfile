@@ -3,6 +3,7 @@ pipeline {
     environment {
         PYTHONPATH = "C:/Users/hp/PycharmProjects/pythonFINAL"
         TEST_REPORTS='test-reports'
+        PATH = "$PATH;C:/Users/hp/anaconda3/Scripts"
     }
     stages {
         stage('Build') {
