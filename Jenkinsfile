@@ -79,11 +79,7 @@ pipeline {
             steps {
                 script {
                     // Combining the commands into a single 'bat' invocation
-                    bat """
-                    call ${VENV_DIR}\\Scripts\\activate
-                    set PYTHONPATH=%PYTHONPATH%;${PROJECT_ROOT}
-                    ${VENV_DIR}\\Scripts\\python -m pytest ${PROJECT_ROOT}\\report_unit_pytest.py --html=${PROJECT_ROOT}\\${HTML_REPORT_DIR}\\report.html
-                    """
+                    bat 'python report_unit_pytest.py'
                 }
             }
         }
