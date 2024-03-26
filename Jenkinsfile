@@ -18,19 +18,19 @@ pipeline {
                 bat 'python report_unit_pytest.py'
             }
         }
-        stage('Run API Tests with Pytest') {
-            steps {
-                echo 'Running API Tests with Pytest...'
-                script {
-                    try {
-                        // Run pytest with pytest-html plugin to generate HTML report
-                        bat "C:/Users/hp/anaconda3/Scripts/pytest.exe report_unit_pytest.py --html=test-reports/report.html"
-                    } catch (Exception e) {
-                        echo "Tests failed, but the build continues."
-                    }
-                }
-            }
-        }
+//         stage('Run API Tests with Pytest') {
+//             steps {
+//                 echo 'Running API Tests with Pytest...'
+//                 script {
+//                     try {
+//                         // Run pytest with pytest-html plugin to generate HTML report
+//                         bat "C:/Users/hp/anaconda3/Scripts/pytest.exe report_unit_pytest.py --html=test-reports/report.html"
+//                     } catch (Exception e) {
+//                         echo "Tests failed, but the build continues."
+//                     }
+//                 }
+//             }
+//         }
         stage('Deploy') {
             steps {
                 echo 'Deploying..'
