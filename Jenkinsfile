@@ -20,7 +20,7 @@ pipeline {
         }
         stage('Run API Tests with Pytest') {
             steps {
-                echo 'Running API Tests with Pytest..'
+                echo 'Running API Tests with Pytest...'
                 script {
                     try {
                         // Run pytest with pytest-html plugin to generate HTML report
