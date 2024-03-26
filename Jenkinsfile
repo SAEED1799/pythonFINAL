@@ -25,7 +25,7 @@ pipeline {
                 script {
                     try {
                         // Run pytest with pytest-html plugin to generate HTML report
-                        bat 'pytest report_unit_pytest.py --html=test-reports/report.html'
+                        bat "${PATH}/pytest.exe report_unit_pytest.py --html=test-reports/report.html"
                     } catch (Exception e) {
                         echo "Tests failed, but the build continues."
                     }
