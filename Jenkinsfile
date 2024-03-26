@@ -2,8 +2,7 @@ pipeline {
     agent any
     environment {
         PYTHONPATH = "C:/Users/hp/PycharmProjects/pythonFINAL"
-        TEST_REPORTS='test-reports'
-        PATH = "$PATH;C:/Users/hp/anaconda3/Scripts"
+        TEST_REPORTS = 'test-reports'
     }
     stages {
         stage('Build') {
@@ -15,17 +14,17 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
-                // Run your tests here
-                bat 'python report_unit_pytest.py'
+                // Run your tests here using pytest
+                bat 'pytest report_unit_pytest.py --html=test-reports/report.html'
             }
         }
         stage('Run API Tests with Pytest') {
             steps {
-                echo 'Running API Tests with Pytest...'
+                echo 'Running API Tests with Pytest..'
                 script {
                     try {
                         // Run pytest with pytest-html plugin to generate HTML report
-                        bat "${PATH}/pytest.exe report_unit_pytest.py --html=test-reports/report.html"
+                        bat "pytest report_unit_pytest.py --html=test-reports/report.html"
                     } catch (Exception e) {
                         echo "Tests failed, but the build continues."
                     }
@@ -37,6 +36,6 @@ pipeline {
                 echo 'Deploying..'
                 // Add deployment steps here if needed
             }
-                     }
-           }
+                    }
+                }
 }
