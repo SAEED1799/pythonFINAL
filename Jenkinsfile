@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        PYTHONPATH = "C:\\Users\\hp\\PycharmProjects\\TERMINALX"
+        PYTHONPATH = "C:/Users/hp/PycharmProjects/pythonFINAL"
         TEST_REPORTS='test-reports'
     }
     stages {
@@ -15,7 +15,7 @@ pipeline {
             steps {
                 echo 'Testing..'
                 // Run your tests here
-                bat 'python tests/functional_tests/test_Check_Sale_Page_Is_OK.py'
+                bat 'python report_unit_pytest.py'
             }
         }
         stage('Run API Tests with Pytest') {
@@ -24,7 +24,7 @@ pipeline {
                 script {
                     try {
                         // Run pytest with pytest-html plugin to generate HTML report
-                        bat "C:/Users/hp/anaconda3/Scripts/pytest.exe tests/functional_tests/test_Check_Sale_Page_Is_OK.py --html=test-reports/report.html"
+                        bat "C:/Users/hp/anaconda3/Scripts/pytest.exe report_unit_pytest.py --html=test-reports/report.html"
                     } catch (Exception e) {
                         echo "Tests failed, but the build continues."
                     }
