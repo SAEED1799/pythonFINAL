@@ -12,7 +12,7 @@ from tests.test_api_continue_ui import test_add_api_check_ui
 def create_suite():
     suite = unittest.TestSuite()
     # Load tests from the test modules
-    for test_module in [test_search_is_good, test_Check_Sale_Page_Is_OK]:
+    for test_module in [test_search_is_good, test_Check_Sale_Page_Is_OK, test_check_price]:
         suite.addTests(unittest.TestLoader().loadTestsFromModule(test_module))
     return suite
 
@@ -36,11 +36,11 @@ class HTMLTestResult(unittest.TextTestResult):
 
 
 def generate_html_report(test_result):
-    #now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     report_file = 'report.html'
     with open(report_file, 'w') as f:
         f.write(f"<html><head><title>Test Report</title></head><body>")
-        #f.write(f"<h1>Test Report - {now}</h1>")
+        f.write(f"<h1>Test Report - {now}</h1>")
         f.write(f"<p>Total tests: {test_result.testsRun}</p>")
         f.write(f"<p>Failures: {len(test_result.failures)}</p>")
         f.write(f"<p>Errors: {len(test_result.errors)}</p><hr>")
