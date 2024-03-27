@@ -2,13 +2,15 @@ import unittest
 from selenium import webdriver
 from logic.brands_page import BrandsPage
 from logic.home_page import HomePage
+from selenium.webdriver.chrome.service import Service
 
 
 class TerminalXTest(unittest.TestCase):
 
     def setUp(self):
-        # Initialize WebDriver (in this case, Chrome)
-        self.driver = webdriver.Chrome("C:\\Users\\hp\\PycharmProjects\\pythonFINAL\\chromedriver.exe")
+        service = Service(executable_path="C:\\Users\\hp\\PycharmProjects\\finalProject\\chromedriver.exe")
+        options = webdriver.ChromeOptions()
+        self.driver = webdriver.Chrome(service=service, options=options)
         self.driver.maximize_window()  # Maximize the browser window
         self.driver.get("https://www.terminalx.com/")
 

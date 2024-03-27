@@ -4,6 +4,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.chrome.service import Service
 
 from logic.brands_page import BrandsPage
 # Assuming logic.category_page and logic.product_details_page are your custom modules
@@ -13,8 +14,9 @@ from logic.home_page import HomePage
 class TerminalXProductTest(unittest.TestCase):
 
     def setUp(self):
-        # Initialize WebDriver (in this case, Chrome)
-        self.driver = webdriver.Chrome("C:\\Users\\hp\\PycharmProjects\\pythonFINAL\\chromedriver.exe")
+        service = Service(executable_path="C:\\Users\\hp\\PycharmProjects\\finalProject\\chromedriver.exe")
+        options = webdriver.ChromeOptions()
+        self.driver = webdriver.Chrome(service=service, options=options)
         self.driver.maximize_window()
         self.driver.get("https://www.terminalx.com/")
 

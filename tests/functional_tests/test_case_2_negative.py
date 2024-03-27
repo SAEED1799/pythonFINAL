@@ -5,13 +5,15 @@ from logic.cart_page import CartPage
 from logic.home_page import HomePage
 from logic.login_page import LoginPage
 from logic.check_out_payment_page import Check_Out_Page
+from selenium.webdriver.chrome.service import Service
 
 
 class negative_input_last_name_Test(unittest.TestCase):
 
     def setUp(self):
-        self.chrome_options = webdriver.ChromeOptions()
-        self.driver = webdriver.Chrome("C:\\Users\\hp\\PycharmProjects\\pythonFINAL\\chromedriver.exe")
+        service = Service(executable_path="C:\\Users\\hp\\PycharmProjects\\finalProject\\chromedriver.exe")
+        options = webdriver.ChromeOptions()
+        self.driver = webdriver.Chrome(service=service, options=options)
         self.driver.get("https://www.terminalx.com/")
         self.url_add_to_cart = "https://www.terminalx.com/pg/MutationAddAnyProductsToAnyCart"
         self.login_page = LoginPage(self.driver)
