@@ -33,7 +33,7 @@ from tests.test_api_continue_ui import test_add_api_check_ui
 def create_suite():
     suite = unittest.TestSuite()
     # Load tests from the test modules
-    for test_module in [test_search_is_good, test_Check_Sale_Page_Is_OK]:
+    for test_module in [test_case_2_negative,test_search_is_good, test_Check_Sale_Page_Is_OK]:
         suite.addTests(unittest.TestLoader().loadTestsFromModule(test_module))
     return suite
 
