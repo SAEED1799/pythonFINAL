@@ -27,7 +27,7 @@ class LoginPage(Base_Page):
         submit_button = self._driver.find_element(By.XPATH, "//button[@data-test-id='qa-login-submit']")
         time.sleep(5)
         username_field.send_keys("saeed.esawi99@gmail.com")  # Replace 'your_username' with actual username
-        password_field.send_keys("1234@Saeed")  # Replace 'your_password' with actual password
+        password_field.send_keys("Saeed@1234")  # Replace 'your_password' with actual password
         # Submit the login form
         submit_button.click()
         time.sleep(5)

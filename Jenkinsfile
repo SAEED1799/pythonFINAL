@@ -9,6 +9,12 @@ pipeline {
             steps {
                 echo 'Building..'
                 bat 'pip install -r requirements.txt' // Install dependencies if needed
+                // Download and extract ChromeDriver using curl
+                sh 'curl -O https://chromedriver.storage.googleapis.com/2.41/chromedriver_linux64.zip'
+                sh 'unzip chromedriver_linux64.zip -d /usr/local/bin/'
+                sh 'rm chromedriver_linux64.zip'
+                // Verify ChromeDriver installation
+                sh 'chromedriver --version'
             }
         }
         stage('Test') {
@@ -16,19 +22,6 @@ pipeline {
                 echo 'Testing..'
                 // Run your tests here
                 bat 'python report_unit_pytest.py'
-            }
-        }
-        stage('Run API Tests with Pytest') {
-            steps {
-                echo 'Running API Tests with Pytest...'
-                script {
-                    try {
-                        // Run pytest with pytest-html plugin to generate HTML report
-                        bat "C:/Users/hp/anaconda3/Scripts/pytest.exe report_unit_pytest.py --html=test-reports/report.html"
-                    } catch (Exception e) {
-                        echo "Tests failed, but the build continues."
-                    }
-                }
             }
         }
         stage('Deploy') {

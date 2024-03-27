@@ -1,4 +1,6 @@
 import unittest
+
+from jira import JIRA
 from selenium import webdriver
 
 from logic.cart_page import CartPage
@@ -16,12 +18,19 @@ class negative_input_last_name_Test(unittest.TestCase):
         self.url_add_to_cart = "https://www.terminalx.com/pg/MutationAddAnyProductsToAnyCart"
         self.login_page = LoginPage(self.driver)
         self.checkout_page = Check_Out_Page(self.driver)
+       # self.auth_jira = JIRA(basic_auth=(self.jira_mail, self.jira_api), options={'server': self.jira_url})
 
-    def api_add_cart(self):
-        self.my_api.api_post_request(self.url_add_to_cart)
+    # def create_issue(self, summery, description, project_key, issue_type="Bug"):
+    #     issue_dict = {
+    #         'project': {'key': project_key},
+    #         'summary': f'failed test: {summery}',
+    #         'description': description,
+    #         'issuetype': {'name': issue_type},
+    #     }
+    #     new_issue = self.auth_jira.create_issue(fields=issue_dict)
+    #     return new_issue.key
 
-
-    #test case 2
+    # test case 2
     def test_negative_input_last_name(self):
         self.home_page = HomePage(self.driver)
         self.cart_page = CartPage(self.driver)
