@@ -22,6 +22,7 @@
 import unittest
 import html
 from datetime import datetime
+import traceback
 
 # Import test modules
 from tests.functional_tests import test_case_2_negative, test_check_price, test_Check_Sale_Page_Is_OK, \
@@ -57,7 +58,7 @@ class HTMLTestResult(unittest.TextTestResult):
 
 def generate_html_report(test_result):
     now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    report_file = 'report.html'
+    report_file = 'test_report.html'
     with open(report_file, 'w') as f:
         f.write(f"<html><head><title>Test Report</title></head><body>")
         f.write(f"<h1>Test Report - {now}</h1>")
@@ -65,18 +66,18 @@ def generate_html_report(test_result):
         f.write(f"<p>Failures: {len(test_result.failures)}</p>")
         f.write(f"<p>Errors: {len(test_result.errors)}</p><hr>")
 
-        for test, result, traceback in test_result.results:
+        for test, result, exc_info in test_result.results:
             color = "green" if result == "PASS" else "red"
             f.write(f"<div style='color:{color};'><h2>{test.id()}</h2>")
             f.write(f"<p><strong>Result:</strong> {result}</p>")
-            if traceback:
-                tb = html.escape(
-                    "\n".join(unittest.TextTestResult._exc_info_to_string(test_result, test, traceback).splitlines()))
-                f.write(f"<pre>{tb}</pre>")
+            if exc_info:
+                # Format the exception information into a string
+                exc_info_formatted = ''.join(traceback.format_exception(*exc_info))
+                exc_info_escaped = html.escape(exc_info_formatted)
+                f.write(f"<pre>{exc_info_escaped}</pre>")
             f.write("</div><hr>")
 
         f.write("</body></html>")
-
 
 if __name__ == '__main__':
     test_suite = create_suite()
