@@ -1,4 +1,7 @@
+import time
 import unittest
+
+from jira import JIRA
 from selenium import webdriver
 
 from logic.brands_page import BrandsPage
@@ -19,35 +22,46 @@ class negative_input_last_name_Test(unittest.TestCase):
         self.url_add_to_cart = "https://www.terminalx.com/pg/MutationAddAnyProductsToAnyCart"
         self.login_page = LoginPage(self.driver)
         self.checkout_page = Check_Out_Page(self.driver)
-       # self.auth_jira = JIRA(basic_auth=(self.jira_mail, self.jira_api), options={'server': self.jira_url})
 
-    # def create_issue(self, summery, description, project_key, issue_type="Bug"):
-    #     issue_dict = {
-    #         'project': {'key': project_key},
-    #         'summary': f'failed test: {summery}',
-    #         'description': description,
-    #         'issuetype': {'name': issue_type},
-    #     }
-    #     new_issue = self.auth_jira.create_issue(fields=issue_dict)
-    #     return new_issue.key
+    def connect(self):
+        TOKEN = "ATATT3xFfGF0iiJ-G0jPEKIaLaPq0u-iLuW72YVbEtUSDNjLa1jH-B28VrIEsbJvcKM2KQJAXbj0o7Ekp2GKhTmN_bYXZKwhf7apCR2dbL8h51RKggCllAb-WDashFIgTwA0Mxg0-zNQQjBdtYytzOzNM4KRZsV9I2ihjKUHXB2yJnWBdrZP1kw=4D64587B"
+        auth_jira = JIRA(basic_auth=('saeed.esawi99@gmail.com', TOKEN),
+                         options={'server': "https://saeed0bd.atlassian.net"})
+        return auth_jira
+
+    def create_issue(self, summery, description, project_key, issue_type="Bug"):
+        issue_dict = {
+            'project': {'key': project_key},
+            'summary': f'failed test: {summery}',
+            'description': description,
+            'issuetype': {'name': issue_type},
+        }
+        jira_auth_new = self.connect()
+        new_issue = jira_auth_new.create_issue(fields=issue_dict)
+        return new_issue.key
 
     # test case 2
     def test_negative_input_last_name(self):
         self.home_page = HomePage(self.driver)
-        self.cart_page = CartPage(self.driver)
-        self.home_page.click_on_sales_button()
-        #self.assertFalse(True, self.cart_page)
-        self.brand_page = BrandsPage(self.driver)
-        self.brand_page.click_planket()
+        self.home_page.search_btn()
+        self.home_page.search_text("מגבת")
+        self.assertFalse(True, "this is failed")
+        # self.brand_page = BrandsPage(self.driver)
+        # self.brand_page.click_planket()
         # self.brand_page.click_add_planket()
-        # time.sleep(7)
+        # time.sleep(2)
         # self.home_page.click_on_cart_button()
+        # time.sleep(2)
         # self.home_page.click_go_to_card_button()
+        # time.sleep(2)
+        # self.cart_page = CartPage(self.driver)
         # self.cart_page.click_checkout_page()
         # self.checkout_page.insert_keys()
         # # assert that i was continue of the name and city
 
     def tearDown(self):
+        self.create_issue(self.connect, "this is first test", "SBYON", "Bug")
+        print("Issue Created")
         # Close the browser window
         self.driver.quit()
 
