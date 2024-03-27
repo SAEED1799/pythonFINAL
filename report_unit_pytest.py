@@ -24,16 +24,19 @@ import html
 from datetime import datetime
 import traceback
 
+from tests.api_tests import test_api_page
 # Import test modules
 from tests.functional_tests import test_case_2_negative, test_check_price, test_Check_Sale_Page_Is_OK, \
-    test_search_is_good
+    test_search_is_good, title_test
+from tests.non_functional_tests import test_non_functional
 from tests.test_api_continue_ui import test_add_api_check_ui
 
 
 def create_suite():
     suite = unittest.TestSuite()
     # Load tests from the test modules
-    for test_module in [test_case_2_negative,test_search_is_good, test_Check_Sale_Page_Is_OK]:
+    for test_module in [test_search_is_good, test_Check_Sale_Page_Is_OK, test_api_page, title_test,
+                        test_non_functional]:
         suite.addTests(unittest.TestLoader().loadTestsFromModule(test_module))
     return suite
 
@@ -78,6 +81,7 @@ def generate_html_report(test_result):
             f.write("</div><hr>")
 
         f.write("</body></html>")
+
 
 if __name__ == '__main__':
     test_suite = create_suite()
