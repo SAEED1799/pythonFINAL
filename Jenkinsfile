@@ -14,12 +14,6 @@ pipeline {
                 bat "venv\\Scripts\\python.exe report_unit_pytest.py"
             }
         }
-         stage('Publish Report') {
-             steps {
-                bat 'powershell Compress-Archive -Path reports/* -DestinationPath report.zip -Force'
-                archiveArtifacts artifacts: 'report.zip', onlyIfSuccessful: true
-             }
-         }
     }
 }
 
