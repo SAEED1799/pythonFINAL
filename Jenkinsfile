@@ -10,8 +10,10 @@ pipeline {
         }
         stage(' Running Tests') {
             steps {
+                catchError{
                 echo 'Testing..'
                 bat "venv\\Scripts\\python.exe report_unit_pytest.py"
+                }
             }
         }
         stage('Publish Report') {
