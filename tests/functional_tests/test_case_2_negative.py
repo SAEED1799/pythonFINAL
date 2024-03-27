@@ -1,3 +1,4 @@
+import time
 import unittest
 from selenium import webdriver
 
@@ -34,17 +35,20 @@ class negative_input_last_name_Test(unittest.TestCase):
     # test case 2
     def test_negative_input_last_name(self):
         self.home_page = HomePage(self.driver)
-        self.cart_page = CartPage(self.driver)
-        self.home_page.click_on_sales_button()
-        #self.assertFalse(True, self.cart_page)
-        self.brand_page = BrandsPage(self.driver)
-        self.brand_page.click_planket()
+        self.home_page.search_btn()
+        self.home_page.search_text("מגבת")
+        self.assertFalse(True, "this is failed")
+        # self.brand_page = BrandsPage(self.driver)
+        # self.brand_page.click_planket()
         # self.brand_page.click_add_planket()
-        # time.sleep(7)
+        # time.sleep(2)
         # self.home_page.click_on_cart_button()
+        # time.sleep(2)
         # self.home_page.click_go_to_card_button()
-        # self.cart_page.click_checkout_page()
-        # self.checkout_page.insert_keys()
+        # time.sleep(2)
+        #self.cart_page = CartPage(self.driver)
+        #self.cart_page.click_checkout_page()
+        #self.checkout_page.insert_keys()
         # # assert that i was continue of the name and city
 
     def tearDown(self):
