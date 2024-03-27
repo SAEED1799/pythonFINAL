@@ -57,7 +57,7 @@ class HTMLTestResult(unittest.TextTestResult):
 
 def generate_html_report(test_result):
     now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    report_file = 'terminalX_report.html'
+    report_file = 'report.html'
     with open(report_file, 'w') as f:
         f.write(f"<html><head><title>Test Report</title></head><body>")
         f.write(f"<h1>Test Report - {now}</h1>")

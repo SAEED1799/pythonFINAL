@@ -20,6 +20,7 @@ class SearchTest(unittest.TestCase):
         options = webdriver.ChromeOptions()
         self.driver = webdriver.Chrome(service=service, options=options)
         self.driver.get("https://www.terminalx.com/")
+        self.start_time = time.time()
         # Assuming APIWrapper and other page objects are correctly implemented
         self.login_page = LoginPage(self.driver)
         self.checkout_page = Check_Out_Page(self.driver)  # Should pass self.driver instead of self
@@ -42,9 +43,8 @@ class SearchTest(unittest.TestCase):
     # Example usage - replace 'www.terminalx.com' with the actual domain and ensure it's using HTTPS
 
     def test_page_load_time(self):
-        start_time = time.time()
         # The page is already loaded in setUp, so we calculate the time difference here
-        load_time = time.time() - start_time
+        load_time = time.time() - self.start_time
         print(f"Page load time for https://www.terminalx.com/: {load_time:.2f} seconds.")
         # You might want to assert that load_time is under a certain threshold
         self.assertTrue(load_time < 10, "The page load time is too slow.")
