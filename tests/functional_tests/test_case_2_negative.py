@@ -1,6 +1,4 @@
 import unittest
-
-from jira import JIRA
 from selenium import webdriver
 
 from logic.cart_page import CartPage
