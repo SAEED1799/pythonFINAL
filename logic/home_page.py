@@ -119,3 +119,13 @@ class HomePage(Base_Page):
         search_input.send_keys(query)
         time.sleep(5)  # Pause to visually confirm the input text
         search_input.send_keys(Keys.ENTER)
+
+    def click_on_plank_button(self):
+        try:
+            sales_button = WebDriverWait(self._driver, 20).until(
+                EC.visibility_of_element_located((By.XPATH, self.SALE_BUTTON))
+            )
+            sales_button.click()
+        except Exception as e:
+            print(f"An error occurred: {e}")
+

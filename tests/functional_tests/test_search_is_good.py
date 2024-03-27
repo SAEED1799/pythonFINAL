@@ -1,5 +1,7 @@
 import unittest
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+
 from logic.brands_page import BrandsPage
 
 from logic.home_page import HomePage
@@ -10,9 +12,9 @@ from logic.check_out_payment_page import Check_Out_Page
 class searchTest(unittest.TestCase):
 
     def setUp(self):
-        self.chrome_options = webdriver.ChromeOptions()
-        self.driver = webdriver.Chrome()
-        self.driver.maximize_window()
+        service = Service(executable_path="C:\\Users\\hp\\PycharmProjects\\finalProject\\chromedriver.exe")
+        options = webdriver.ChromeOptions()
+        self.driver = webdriver.Chrome(service=service, options=options)
         self.driver.get("https://www.terminalx.com/")
         self.url_add_to_cart = "https://www.terminalx.com/pg/MutationAddAnyProductsToAnyCart"
         self.login_page = LoginPage(self.driver)

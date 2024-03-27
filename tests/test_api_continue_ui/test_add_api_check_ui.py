@@ -1,6 +1,7 @@
 import time
 
 from selenium.webdriver.chrome import webdriver
+from selenium.webdriver.chrome.service import Service
 
 from infra.api_infra.api_test_base import APITestBase
 from logic.api_page import UserPage
@@ -21,7 +22,9 @@ class AddToCart(APITestBase):
         self.qty = self.config['Tests']['product']['qty']
         self.sku = self.config['Tests']['product']['sku']
         self.qty_update = self.config['Tests']['product']['qty_update']
-        self.driver = webdriver.Chrome()
+        service = Service(executable_path="C:\\Users\\hp\\PycharmProjects\\finalProject\\chromedriver.exe")
+        options = webdriver.ChromeOptions()
+        self.driver = webdriver.Chrome(service=service, options=options)
         self.driver.get("https://www.terminalx.com/")
 
     def test_add_item_to_cart(self):

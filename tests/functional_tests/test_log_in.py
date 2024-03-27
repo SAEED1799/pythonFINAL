@@ -1,6 +1,8 @@
 import time
 import unittest
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+
 from logic.home_page import HomePage
 from logic.login_page import LoginPage
 
@@ -8,8 +10,9 @@ from logic.login_page import LoginPage
 class TerminalXLoginTest(unittest.TestCase):
 
     def setUp(self):
-        self.driver = webdriver.Chrome()
-        self.driver.maximize_window()
+        service = Service(executable_path="C:\\Users\\hp\\PycharmProjects\\finalProject\\chromedriver.exe")
+        options = webdriver.ChromeOptions()
+        self.driver = webdriver.Chrome(service=service, options=options)
         self.driver.get("https://www.terminalx.com/")
 
     def test_login_to_terminal(self):

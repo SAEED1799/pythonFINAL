@@ -10,6 +10,7 @@ from tests.functional_tests import test_case_2_negative, test_check_price, test_
 from tests.api_tests import test_api_page
 from tests.test_api_continue_ui import test_add_api_check_ui
 
+
 class HTMLReportTestRunner:
     def __init__(self, report_file):
         self.report_file = report_file
@@ -52,10 +53,12 @@ class HTMLReportTestRunner:
             f.write("</tbody></table>")
             f.write(f"<h2>Summary</h2><p>Ran {result.testsRun} tests in {total_time:.2f}s</p>")
             if not result.wasSuccessful():
-                f.write(f"<p><strong>FAILED</strong> (failures={len(result.failures)}, errors={len(result.errors)})</p>")
+                f.write(
+                    f"<p><strong>FAILED</strong> (failures={len(result.failures)}, errors={len(result.errors)})</p>")
             else:
                 f.write("<p>All tests passed.</p>")
             f.write("</body></html>")
+
 
 if __name__ == "__main__":
     suite = unittest.TestSuite()

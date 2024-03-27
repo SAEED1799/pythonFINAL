@@ -4,6 +4,7 @@ import unittest
 
 import requests
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 
 from infra.api_infra.api_wrapper import APIWrapper
 from logic.check_out_payment_page import Check_Out_Page
@@ -15,12 +16,9 @@ from logic.login_page import LoginPage
 class SearchTest(unittest.TestCase):
 
     def setUp(self):
-        # Setup Chrome options
-        self.chrome_options = webdriver.ChromeOptions()
-        # Example to add headless option, remove if not needed
-        # self.chrome_options.add_argument("--headless")
-        self.driver = webdriver.Chrome(options=self.chrome_options)
-        self.driver.maximize_window()
+        service = Service(executable_path="C:\\Users\\hp\\PycharmProjects\\finalProject\\chromedriver.exe")
+        options = webdriver.ChromeOptions()
+        self.driver = webdriver.Chrome(service=service, options=options)
         self.driver.get("https://www.terminalx.com/")
         # Assuming APIWrapper and other page objects are correctly implemented
         self.login_page = LoginPage(self.driver)
