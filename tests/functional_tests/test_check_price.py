@@ -14,7 +14,7 @@ class TerminalXProductTest(unittest.TestCase):
 
     def setUp(self):
         # Initialize WebDriver (in this case, Chrome)
-        self.driver = webdriver.Chrome()
+        self.driver = webdriver.Chrome("C:\\Users\\hp\\PycharmProjects\\pythonFINAL\\chromedriver.exe")
         self.driver.maximize_window()
         self.driver.get("https://www.terminalx.com/")
 

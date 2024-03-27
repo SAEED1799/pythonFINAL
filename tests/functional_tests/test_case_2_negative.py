@@ -11,7 +11,7 @@ class negative_input_last_name_Test(unittest.TestCase):
 
     def setUp(self):
         self.chrome_options = webdriver.ChromeOptions()
-        self.driver = webdriver.Chrome()
+        self.driver = webdriver.Chrome("C:\\Users\\hp\\PycharmProjects\\pythonFINAL\\chromedriver.exe")
         self.driver.get("https://www.terminalx.com/")
         self.url_add_to_cart = "https://www.terminalx.com/pg/MutationAddAnyProductsToAnyCart"
         self.login_page = LoginPage(self.driver)
