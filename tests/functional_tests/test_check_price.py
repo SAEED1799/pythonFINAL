@@ -30,7 +30,7 @@ class TerminalXProductTest(unittest.TestCase):
         self.home_page.search_text("nike")
         self.brand_page = BrandsPage(self.driver)
         self.brand_page.sort_by_brand()
-        self.assertTrue(False,#self.brand_page.sort_isDisplayed(),
+        self.assertTrue(self.brand_page.sort_isDisplayed(),
                         f"First item price ""first_product"" is not lower than or equal to second item price second_price.")
 
     def tearDown(self):

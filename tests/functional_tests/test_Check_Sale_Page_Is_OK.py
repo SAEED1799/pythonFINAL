@@ -18,7 +18,8 @@ class TerminalXTest(unittest.TestCase):
         self.home_page = HomePage(self.driver)
         self.home_page.click_on_sales_button()
         self.brand_page = BrandsPage(self.driver)
-        self.assertTrue(self.brand_page.on_sale_is_displayed(), "on sale page ok")
+        #self.assertTrue(self.brand_page.on_sale_is_displayed(), "on sale page ok")
+        self.assertTrue(False, "on sale page ok")
 
     def tearDown(self):
         # Close the browser
