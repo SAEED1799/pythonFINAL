@@ -1,24 +1,3 @@
-# import unittest
-#
-# # Import test modules
-# from tests.functional_tests import test_case_2_negative, test_check_price, test_Check_Sale_Page_Is_OK
-#
-#
-# def create_suite():
-#     suite = unittest.TestSuite()
-#
-#     # Load tests from the test modules
-#     for test_module in [test_case_2_negative, test_check_price, test_Check_Sale_Page_Is_OK]:
-#         # This assumes each module has a TestCase-derived class following the `unittest` pattern.
-#         suite.addTests(unittest.TestLoader().loadTestsFromModule(test_module))
-#
-#     return suite
-#
-#
-# if __name__ == '__main__':
-#     runner = unittest.TextTestRunner(verbosity=2)
-#     test_suite = create_suite()
-#     runner.run(test_suite)
 import unittest
 import html
 from datetime import datetime
@@ -57,11 +36,11 @@ class HTMLTestResult(unittest.TextTestResult):
 
 
 def generate_html_report(test_result):
-    now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    #now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     report_file = 'test_report.html'
     with open(report_file, 'w') as f:
         f.write(f"<html><head><title>Test Report</title></head><body>")
-        f.write(f"<h1>Test Report - {now}</h1>")
+        #f.write(f"<h1>Test Report - {now}</h1>")
         f.write(f"<p>Total tests: {test_result.testsRun}</p>")
         f.write(f"<p>Failures: {len(test_result.failures)}</p>")
         f.write(f"<p>Errors: {len(test_result.errors)}</p><hr>")

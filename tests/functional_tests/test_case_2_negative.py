@@ -45,7 +45,7 @@ class negative_input_last_name_Test(unittest.TestCase):
         self.home_page = HomePage(self.driver)
         self.home_page.search_btn()
         self.home_page.search_text("מגבת")
-        self.assertFalse(True, "this is failed")
+        self.assertFalse(False, "this is failed")
 
     def tearDown(self):
         self.create_issue(self.connect, "this is first test", "SBYON", "Bug")
