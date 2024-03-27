@@ -11,7 +11,7 @@ pipeline {
         stage(' Running Tests') {
             steps {
                 echo 'Testing..'
-                bat "venv\\Scripts\\python.exe report_unit_pytest.py"
+                bat "pytest report_unit_pytest.py"
             }
         }
     }
