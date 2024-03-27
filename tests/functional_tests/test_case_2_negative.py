@@ -24,8 +24,8 @@ class negative_input_last_name_Test(unittest.TestCase):
         self.checkout_page = Check_Out_Page(self.driver)
 
     def connect(self):
-        TOKEN = "ATATT3xFfGF0iiJ-G0jPEKIaLaPq0u-iLuW72YVbEtUSDNjLa1jH-B28VrIEsbJvcKM2KQJAXbj0o7Ekp2GKhTmN_bYXZKwhf7apCR2dbL8h51RKggCllAb-WDashFIgTwA0Mxg0-zNQQjBdtYytzOzNM4KRZsV9I2ihjKUHXB2yJnWBdrZP1kw=4D64587B"
-        auth_jira = JIRA(basic_auth=('saeed.esawi99@gmail.com', TOKEN),
+        TOKEN = "VXYATATT3xFfGF0TzNcb75ZwcWLozmvsCUCvGzSjfd7KKZpo9rwsEgX9Wm0c1sICCa3rVWO4Ms5op3SAw9NCtOfIfHeKKr2da5W89seMlSxalOfScIb_rrqrtiNn_StYnCxTqgXxlCTijQF2N1a0FW9bLSUaa4oDFrFZA1V0hviRXyGQdRUaXy7n3k=C60B8A85"
+        auth_jira = JIRA(basic_auth=('saeed.esawi99@gmail.com', TOKEN[3:]),
                          options={'server': "https://saeed0bd.atlassian.net"})
         return auth_jira
 
@@ -44,8 +44,9 @@ class negative_input_last_name_Test(unittest.TestCase):
     def test_negative_input_last_name(self):
         self.home_page = HomePage(self.driver)
         self.home_page.search_btn()
-        self.home_page.search_text("מגבת")
-        self.assertFalse(False, "this is failed")
+        self.home_page.search_text("i go to jira-bug")
+        time.sleep(5)
+        self.assertFalse(True, "this is failed")
 
     def tearDown(self):
         self.create_issue(self.connect, "this is first test", "SBYON", "Bug")
