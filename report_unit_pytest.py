@@ -8,7 +8,7 @@ from tests.functional_tests import test_case_2_negative, test_check_price, test_
     test_search_is_good
 from tests.test_api_continue_ui import test_add_api_check_ui
 
-
+#this for jira
 def create_suite():
     suite = unittest.TestSuite()
     # Load tests from the test modules
