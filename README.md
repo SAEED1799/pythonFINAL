@@ -1,4 +1,5 @@
-README - Automation Project: pythonFINAL
+README - Automation Project:
+pythonFINAL
 Overview
 The pythonFINAL project is a comprehensive automation testing suite designed for extensive testing of web applications. It covers various types of tests, including API tests, functional tests, non-functional tests, and the ability to generate test reports. This suite is structured to facilitate easy navigation, execution, and maintenance of tests.
 
@@ -73,5 +74,13 @@ After tests execution, reports will be saved in test_reports.
 Contribution
 Contributions to enhance or extend the test suite are welcome. Please submit a pull request with your proposed changes or additions.
 
+
+
+
 Support
 For issues or questions regarding the test suite, please file an issue on the project's GitHub repository.
+
+
+
+![image](https://github.com/SAEED1799/pythonFINAL/assets/73116797/8c2c109c-77b8-479b-8b2f-d1d5ea07b9a7)
+
