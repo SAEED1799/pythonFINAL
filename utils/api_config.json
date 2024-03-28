@@ -3,7 +3,7 @@
     "baseURL": "https://www.terminalx.com",
     "loginCredentials": {
       "email": "saeed.esawi99@gmail.com",
-      "password": "Saeed@1234",
+      "password": "Saeed!1234",
       "expected_user_name": "saeed"
     },
     "product": {
